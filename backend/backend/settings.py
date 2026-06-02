@@ -9,6 +9,16 @@ https://docs.djangoproject.com/en/6.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.0/ref/settings/
 """
+from pathlib import Path
+import os
+from datetime import timedelta
+
+import dj_database_url
+from dotenv import load_dotenv
+
+load_dotenv()
+
+BASE_DIR = Path(__file__).resolve().parent.parent 
 
 #print("DATABASE_URL =", env("DATABASE_URL"))
 #print("ENV FILE PATH:", Path(BASE_DIR).parent / ".env")
@@ -81,21 +91,9 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
-import environ
-from pathlib import Path
-import dj_database_url
-BASE_DIR = Path(__file__).resolve().parent.parent
-
-env = environ.Env()
-
 DATABASES = {
-    'default': dj_database_url.parse(
-        "postgresql://internship_db_fpf7_user:5K07aoKcGvxDjCjvytQ3eeeaRqolXfuo@dpg-d7srvbrbc2fs73d2g91g-a.frankfurt-postgres.render.com/internship_db_fpf7"
-    )
+    "default": dj_database_url.parse(os.getenv("DATABASE_URL"))
 }
-#print(env("DATABASE_URL"))
-# Password validation
-# https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -154,7 +152,7 @@ SIMPLE_JWT = {
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
-    "https://internship-system-8pdi.onrender.com/",
+    "https://internship-system-8pdi.onrender.com",
     "https://csc-1202-software-development.vercel.app",
 
 
