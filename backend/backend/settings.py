@@ -153,7 +153,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
     "https://internship-system-8pdi.onrender.com",
-    "https://csc-1202-software-development.vercel.app",
+    "https://internship-learning-evaluation-system.vercel.app",
 
 
 ]
